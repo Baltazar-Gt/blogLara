@@ -1,0 +1,23 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <div>
+                <label class="text-white tracking-in-expand">Research</label>
+                <br>
+                <h1 class="titulo tracking-in-expand per"><b>{{ posts.data?.titulo }}</b></h1>
+                <div class="linea-asombrosa tracking-in-expand"></div>
+                <p class="tracking-in-expand text-white" [innerHTML]="posts.data?.contenido"></p>
+                <div align="center">
+                    <img src="{{ assets+posts.data?.imagen }}" class="img-fluid tracking-in-expand post" alt="Imagen del post">
+                </div>
+                <br><br><br>
+                <div align="right">
+                    <a [routerLink]="['/categoria', posts.data?.categoria_id]" class="tracking-in-expand per btn btn-primary text-white ">Categoria: {{ categoria.nombre }}</a>
+                    <a class="btn btn-primary" href="{{ assets+posts.data?.archivo }}" download target="_blank">Descargar Investigación Completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>

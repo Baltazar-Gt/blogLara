@@ -1,0 +1,33 @@
+<br>
+<div class="container mt-5">
+    <section id="mission" class="mt-5">
+      <h1 class=" text-white tracking-in-expand">About Us</h1>
+        <p class="text-white tracking-in-expand">En nuestra plataforma, facilitamos la difusión de investigaciones académicas de estudiantes y doctores, haciendo que el conocimiento sea accesible para todos. Nos esforzamos por ser una fuente confiable en línea de trabajos académicos de calidad, promoviendo la colaboración, la transparencia y la innovación. Creemos en la accesibilidad del conocimiento y valoramos la diversidad, garantizando un espacio inclusivo y respetuoso para toda la comunidad.</p>
+    </section>
+
+    <section id="team" class="mt-5">
+        <h1 class="text-white tracking-in-expand">Our Team</h1>
+        <div class="row">
+            <div class="col-md-4">
+              <div class="card bg-dark text-white" [routerLink]="['/autor', autor1.data?.id]">
+                <img class="card-img" [src]="assets+autor1?.data?.foto" alt="..." alt="Card image">
+                <div class="card-img-overlay">
+                  <h5 class="card-title position-absolute bottom-0 start-4 p-4 m-2 tracking-in-expand">{{ autor1.data?.name }}</h5>
+                  <p class="card-text position-absolute bottom-0 start-0 m-5 p-1 tracking-in-expand d-block d-md-none d-lg-block">{{ autor1.data?.profesion }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-dark text-white" [routerLink]="['/autor', autor2.data?.id]">
+                <img class="card-img" [src]="assets+autor2?.data?.foto" alt="..." alt="Card image">
+                <div class="card-img-overlay">
+                  <h5 class="card-title position-absolute bottom-0 start-4 p-4 m-2 tracking-in-expand">{{ autor2.data?.name }}</h5>
+                  <p class="card-text position-absolute bottom-0 start-0 m-5 p-1 tracking-in-expand d-block d-md-none d-lg-block">{{ autor2.data?.profesion }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+</div>
+
+<br><br>

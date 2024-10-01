@@ -1,0 +1,119 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+  }
+  
+  .footer h5 {
+    font-size: 1.5rem; /* Tamaño de fuente para pantallas grandes */
+    font-style: normal;
+  }
+  
+  .footer ul li, .footer p, .footer .copy {
+    font-size: 1rem; /* Tamaño de fuente para pantallas grandes */
+    font-style: normal;
+  }
+  
+  .footer a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    color: #cc99ff;
+    text-decoration: none;
+  }
+  
+  .social-icons a {
+    font-size: 24px;
+    margin: 0 10px;
+  }
+  
+  .copy {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1rem; /* Tamaño de fuente para pantallas grandes */
+  }
+  
+  @media (max-width: 992px) {
+    .footer h5 {
+      font-size: 1.2rem; /* Tamaño de fuente para pantallas medianas */
+    }
+  
+    .footer ul li, .footer p, .footer .copy {
+      font-size: 0.9rem; /* Tamaño de fuente para pantallas medianas */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer h5 {
+      font-size: 1rem; /* Tamaño de fuente para pantallas pequeñas */
+    }
+  
+    .footer ul li, .footer p, .footer .copy {
+      font-size: 0.8rem; /* Tamaño de fuente para pantallas pequeñas */
+    }
+  }
+  
+  
+/* Posts Title */
+h1 {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 2.5rem;
+  font-style: normal;
+  color: #5D60A6;
+
+  @media (max-width: 992px) {
+      font-size: 2rem;
+  }
+
+  @media (max-width: 768px) {
+      font-size: 1.5rem;
+  }
+}
+
+h5 {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */
+  font-style: normal;
+  color: #5D60A6; /* Color inicial */
+  animation: colorChange 5s infinite;
+
+  @media (max-width: 992px) {
+      font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+      font-size: 1rem;
+  }
+}
+/* Posts Description */
+li {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 1.2rem;
+  font-style: normal;
+  color: #FFFFFF;
+
+  @media (max-width: 992px) {
+      font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+      font-size: 1rem;
+  }
+}
+
+.social-icons a {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .social-icons {
+    text-align: center;
+  }
+  .social-icons a {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+}

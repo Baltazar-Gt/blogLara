@@ -1,0 +1,54 @@
+<div class="container">
+    @if (ver == true) {
+        <div class="alert alert-success">Post Creado Correctamente</div>
+    }
+    <div class="btn btn-primary" (click)="mostrarOcultar()">Agregar Post</div>
+    <hr>
+    
+    @if (mostrarForm) {
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Ingresa el titulo</label>
+            <div class="input-group">
+                <input type="text" name="titulo" id="titulo" [(ngModel)] = "titulo" class="form-control">
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="categoria">Categoria:</label>
+            <div class="input-group">
+                <select class="form-select form-select-sm" [(ngModel)] = "categoria" name="categoria" id="categoria">
+                   @for (categoria of categorias; track categoria.id) {
+                        <option value=" {{ categoria.id}} "> {{categoria.nombre}} </option>
+                   }
+                </select>
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <label for="image">Imagen: &nbsp;</label>
+            <input type="file"  class="form-control" id="contenido" (change)="onFileChange($event)">
+        </div>
+        
+        <div>
+            <label for=""></label> 
+            <editor [(ngModel)] = "contenido"
+                [init]="{ 
+                    base_url: '/tinymce',
+                    plugins: 'lists link image table code help wordcount' 
+                }">
+            </editor>
+            
+        </div>
+        <button class="btn btn-dark" (click)="crearPost()">Enviar</button>
+    }
+    <!-- Large modal -->
+    <br><br>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          ...
+        </div>
+      </div>
+    </div>
+    
+</div>

@@ -1,0 +1,22 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center text-white tracking-in-expand">Todas las Categorias</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        @for (categoria of categorias; track categoria.id) {
+        <div class="col-md-6"> <!-- Aumenta el tamaño de las tarjetas -->
+            <div class="card text-bg-dark mb-3" [routerLink]="['/categoria', categoria.id]">
+                <div class="card-body">
+                    <h5 class="card-title tracking-in-expand" [innerHTML]="categoria.nombre"></h5>
+                    <p class="card-text text-white tracking-in-expand">Explora más sobre {{ categoria.nombre }}...</p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+<br><br><br><br><br><br>

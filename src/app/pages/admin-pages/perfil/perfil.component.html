@@ -1,0 +1,213 @@
+<br>
+<!-- Mostrar Perfil de -->
+<div class="container mt-5 animated-border">
+    <div class="card mb-3 tracking-in-expand">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img [src]="assets + usuario.foto" class="img-fluid rounded-start" alt="Foto de Perfil">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" id="userName">&nbsp; {{usuario.name}}</h5>
+                    <p class="card-text correo"><strong>Correo Electrónico:</strong> <span id="userEmail">&nbsp;{{usuario.email}}</span></p>
+                    <p class="card-text profesion"><strong>Profesión:</strong> <span id="userProfession">&nbsp;{{usuario.profesion}}</span></p>
+                    <p class="card-text acerca"><strong>Acerca de:</strong> <span id="userAbout">&nbsp;{{usuario.acerca}}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar Perfil</a>
+            <a class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#crearPost">Crear Post</a>
+        </div>
+    </div>
+</div>
+<div class="linea-asombrosa"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center per tracking-in-expand">Todos tus Posts</h1>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        @for (post of posts; track post.id) {
+        <div class="col-md-4">
+            <div class="card tarjeta text-bg-dark mb-3 animated-border autor">
+                <img class=" tracking-in-expand img-flui" [src]="assets+post.imagen" alt="...">
+                <div class="card-body cuerpo-tarjeta">
+                    <h5 class="card-title titulo-tarjeta per tracking-in-expand">{{ post.titulo }}</h5>
+                    <p class="card-text texto-tarjeta" [innerHTML]="post.contenido.slice(0, 100)"> post.contenido.length > 100 ? '...' : ''</p>
+
+                    <div class="btn-group">
+                        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editarPost" (click)="cargarPostId(post.id)" (click)="cargarCategoriaId(post.categoria_id)">Editar</a>
+                        <a class="btn btn-danger" (click)="eliminarPost(post.id)">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+<!-- Modal de actualizar usuario -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar mis Datos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="name" [(ngModel)]="usuario.name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="correo" name="email" [(ngModel)]="usuario.email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="usuario.password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="profesion" class="form-label">Profesión</label>
+                        <input type="text" class="form-control" id="profesion" name="profesion" [(ngModel)]="usuario.profesion">
+                    </div>
+                    <div class="mb-3">
+                        <label for="acerca" class="form-label">Acerca de</label>
+                        <textarea class="form-control" id="acerca" rows="3" name="acerca" [(ngModel)]="usuario.acerca"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto" class="form-label">Foto de Perfil</label>
+                        <input class="form-control" type="file" id="foto" name="foto" (change)="onFileChange($event)">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="actualizarUsuario()">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal para crear Post -->
+<div class="modal fade" id="crearPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Crear nuevo Post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Ingresa el titulo</label>
+                        <div class="input-group">
+                            <input type="text" name="titulo" id="titulo" [(ngModel)]="post.titulo" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="categoria">Categoria:</label>
+                        <div class="input-group">
+                            <select class="form-select form-select-sm" [(ngModel)]="categoria" name="categoria"
+                                id="categoria">
+                                @for (categoria of categorias; track categoria.id) {
+                                <option value=" {{ categoria.id}} "> {{categoria.nombre}} </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="imagen">Imagen: &nbsp;</label>
+                        <input type="file" class="form-control" id="imagen" name="imagen" (change)="onImgChange($event)">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <label for="archivo">Archivo: &nbsp;</label>
+                        <input type="file" class="form-control" id="archivo" (change)="onArchivoChange($event)">
+                    </div>
+
+                    <div>
+                        <label for=""></label>
+                        <editor name="contenido" [(ngModel)]="post.contenido" [init]="{ 
+                                    base_url: '/tinymce',
+                                    plugins: 'lists link image table code help wordcount' 
+                                }">
+                        </editor>
+
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="crearPost()">Crear Post</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<!-- modal para editar -->
+<div class="modal fade" id="editarPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 per" id="exampleModalLabel">Actualizar mi Post</h1>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="tittle" class="form-label">Ingresa el titulo</label>
+                        <div class="input-group">
+                            <input type="text" name="tittle" id="tittle" [(ngModel)]="unPost.titulo" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="cat">Tipo</label>
+                        <select class="form-select" id="cat" name="cat" [(ngModel)]="cat.id">
+                            @for (categoria of categorias; track categoria.id) {
+                            <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="img">Imagen: &nbsp;</label>
+                        <input type="file" class="form-control" id="img" name="img" (change)="onImgChange($event)">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <label for="arch">Archivo: &nbsp;</label>
+                        <input type="file" class="form-control" id="arch" name="arch" (change)="onArchivoChange($event)">
+                    </div>
+
+                    <div>
+                        <label for=""></label>
+                        <editor name="contenido" [(ngModel)]="unPost.contenido" [init]="{ 
+                                    base_url: '/tinymce',
+                                    plugins: 'lists link image table code help wordcount' 
+                                }">
+                        </editor>
+
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="actualizarPost(unPost.id)">Actualizar Post</button>
+            </div>
+        </div>
+    </div>
+</div>

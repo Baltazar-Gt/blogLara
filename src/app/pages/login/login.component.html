@@ -1,0 +1,58 @@
+<!-- <label for="usuario">Usuario</label>
+<input type="text" class="form-control" name="usuario" id="usuario" [(ngModel)]="usuario">
+<label for="password">Password</label>
+<input type="text" class="form-control" name="password" [(ngModel)]="password">
+<div class="btn btn-dark my-2" (click)="acceder()">Acceder</div>
+@if(nota){
+<div class="alert alert-danger">Usuario y/o contraseña incorrecta</div>
+}
+ -->
+
+<!-- como puedo poner un await para esperar a que se consulte si esta logeado o no, si no para que salte lo de usuario incorrecto -->
+<body>
+
+    <section class="vh-100 d-flex align-items-center">
+        <form>
+            <h1 class="text-center mb-4">Login</h1>
+    
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="inputbox">
+                        <label for="usuario">Email</label>
+                        <input type="email" class="form-control" name="usuario" id="usuario" [(ngModel)]="usuario" required>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="inputbox">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="password" required>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="forgot form-check">
+                        <label class="form-check-label left"></label>
+                        <a href="#" class="ms-2">Olvidé la contraseña</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-dark w-100" (click)="acceder()">Acceder</button>
+                    <div class="mt-3">
+                        @if(nota) {
+                        <div class="alert alert-danger">Usuario y/o contraseña incorrecta</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+    
+    </body>

@@ -1,0 +1,96 @@
+.alert{
+    margin-bottom: 10px;
+    margin-right: 0%;
+    position: fixed;
+    z-index: 1000;
+}
+
+.btn{
+    color: black;
+}
+
+a{
+    color:black;
+}
+
+.per {
+  color: #5D60A6;
+}
+
+.linea-asombrosa {
+    width: 100%; /* Ancho completo */
+    height: 5px; /* Altura de la línea */
+    background: linear-gradient(to right, #7EF2B0, #cc99ff); /* Gradiente de colores */
+    margin: 50px 0; /* Margen superior e inferior */
+    position: relative; /* Para poder agregar el efecto */
+    overflow: hidden; /* Para ocultar el desbordamiento */
+  }
+  
+  .linea-asombrosa::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20%; /* Empieza fuera del área visible */
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, #ffffff, transparent); /* Gradiente para un efecto de brillo */
+    animation: movimiento 5s linear infinite; /* Animación para el movimiento */
+  }
+  
+  @keyframes movimiento {
+    0% { left: -20%; } /* Inicio de la animación */
+    100% { left: 100%; } /* Fin de la animación */
+  }
+
+  @keyframes borderAnimation {
+    0% {
+        border-color: #7EF2B0;
+        box-shadow: 0 0 10px 0px #0080ff;
+    }
+    10% {
+        border-color: #0D0D0D;
+        box-shadow: 0 0 20px 0px #0066cc;
+    }
+    20% {
+        border-color: #7EF2B0;
+        box-shadow: 0 0 30px 0px #004d99;
+    }
+    30% {
+        border-color: #0D0D0D;
+        box-shadow: 0 0 30px 0px #003366;
+    }
+    40% {
+        border-color: #7EF2B0;
+        box-shadow: 0 0 30px 0px #003399;
+    }
+    50% {
+        border-color: #0D0D0D;
+        box-shadow: 0 0 30px 0px #330099;
+    }
+    60% {
+        border-color: #7EF2B0;
+        box-shadow: 0 0 30px 0px #663399;
+    }
+    70% {
+        border-color: #0D0D0D;
+        box-shadow: 0 0 30px 0px #993399;
+    }
+    80% {
+        border-color: #7EF2B0;
+        box-shadow: 0 0 30px 0px #b366ff;
+    }
+    90% {
+        border-color: #0D0D0D;
+        box-shadow: 0 0 20px 0px #cc99ff;
+    }
+    100% {
+        border-color: #7EF2B0;
+        box-shadow: 0 0 10px  0px #6f42c1;
+    }
+  }
+  
+  .animated-border {
+    border: 1px solid;
+    animation: borderAnimation 20s infinite; /* Agregar una transición suave al final */
+    transition: box-shadow 1s ease-in-out; /* Agregar una transición suave al final */
+  }

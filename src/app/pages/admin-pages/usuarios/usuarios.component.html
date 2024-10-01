@@ -1,0 +1,117 @@
+<br><br>
+<div class="container">
+    <h1 class="mb-4 text-white" align="center">Gestionar Usuarios</h1>
+    <h4 class="mb-4 text-white">Agregar Usuario</h4>
+
+    <div class="mb-3">
+        <label for="name" class="form-label text-white">Nombre del usuario</label>
+        <div class="input-group">
+            <input type="text" name="name" id="name" [(ngModel)]="name" class="form-control">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label text-white">Email del usuario</label>
+        <div class="input-group">
+            <input type="email" name="email" id="email" [(ngModel)]="email" class="form-control">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="contra" class="form-label text-white">Contraseña del usuario</label>
+        <div class="input-group">
+            <input type="password" name="password" id="contra" [(ngModel)]="password" class="form-control">
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="crearUsuario()">Agregar</button>
+</div>
+
+<br><br>
+
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="bg-success text-white">Nombre</th>
+                <th class="bg-success text-white">Email</th>
+                <th class="bg-secondary text-white">Tipo</th>
+                <th class="bg-warning">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (usuario of usuarios.data; track usuario.id) {
+                <tr>
+                    <td>{{ usuario.name }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.tipo }}</td>
+                    <td>
+                        <button class="btn btn-danger me-2" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+                        <button data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-warning" (click)="obtenerUsuario(usuario.id)">Editar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form >
+
+                    <div class="form-group">
+                        <label for="id">ID</label>
+                        <input type="text" id="id" name="id" class="form-control" disabled="" [(ngModel)]="usuarioSeleccionado.id" placeholder="{{usuarioSeleccionado.id}}" >
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="tipo">Tipo</label>
+                        <select class="form-select" id="tipo" name="tipo" [(ngModel)]="usuarioSeleccionado.tipo">
+                            <option value="admin">Administrador</option>
+                            <option value="user">Usuario</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo">Correo</label>
+                        <input type="email" id="correo" name="correo" class="form-control" [(ngModel)]="usuarioSeleccionado.email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="usuarioSeleccionado.password">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="actualizarUsuario(usuarioSeleccionado.id)">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (mensajeCre) {
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>{{mensajeCre}}</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (MensajeElim) {
+    <div class="alert alert-success alert-dismissible fade show " role="alert">
+        <span>{{MensajeElim}}</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<br>
+

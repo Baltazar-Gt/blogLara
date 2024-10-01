@@ -1,0 +1,53 @@
+.activo {
+    font-weight: bold;
+    color: #cc99ff;
+}
+* {
+    background-color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .nav-link {
+    color: white;
+  }
+  
+  .navbar {
+    margin: 0;
+    padding: 0;
+  
+    /* Ajusta el padding vertical y horizontal según tu preferencia */
+  }
+  
+  .navbar-nav .nav-link {
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    /* Inicia con ancho 0 para la animación */
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    /* Inicia desde la izquierda */
+    background-image: linear-gradient(to right, #7EF2B0, #cc99ff);
+    visibility: hidden;
+    transition: width 0.4s ease-in-out;
+    /* Animación de ancho */
+  }
+  
+  .navbar-nav .nav-link:hover::after {
+    visibility: visible;
+    width: 100%;
+    /* Termina en el 100% del ancho */
+  }
+  
+  /* Estilos adicionales para dispositivos móviles */
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      background-color: #fff;
+      /* Cambia el color del fondo del menú desplegable */
+      border-radius: 0;
+    }
+  }

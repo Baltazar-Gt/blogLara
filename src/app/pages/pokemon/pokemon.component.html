@@ -1,0 +1,5 @@
+<ul>
+    @for(pokemon of pokemons.results; track $index){
+        <li>{{ pokemon.name}} - <a [routerLink]="[$index+1]">Mas info...</a></li>
+    }
+</ul>

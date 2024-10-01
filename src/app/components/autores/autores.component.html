@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center per tracking-in-expand">Autores</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="text-center text-white tracking-in-expand">Conoce a los autores de las investigaciones que te gustan.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let autor of autores.data">
+      <div class="card bg-dark text-white animated-border" [routerLink]="['/autor', autor.id]">
+        <img class="card-img" [src]="assets+autor.foto" alt="..." alt="Card image">
+        <div class="card-img-overlay">
+          <h5 class="card-title position-absolute bottom-0 start-4 p-4 m-2 tracking-in-expand">{{ autor.name }}</h5>
+          <p class="card-text position-absolute bottom-0 start-0 m-5 p-1 tracking-in-expand d-block d-md-none d-lg-block">
+            {{ autor.profesion }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+
+
+<!-- <div class="container">
+  <div class="row">
+      <div class="col-12">
+          <h1 class="text-center per">Autores</h1>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-12">
+          <p class="text-center text-white">Conoce a los autores de las investigaciones que te gustan.</p>
+      </div>
+  </div>
+
+  <div class="row">
+      @for (autor of autores; track autor.id) {
+      <div class="col-md-4">
+          <div class="card text-bg-dark mb-3 animated-border" [routerLink]="['/autor',autor.id]">
+              <img class="img-fluid" [src]="autor.foto" alt="...">
+              <div class="card-body">
+                  <h5 class="card-title per">{{autor.nombre}}</h5>
+                  <p class="card-text">{{autor.descripcion}}</p>
+              </div>
+          </div>
+      </div>
+      }
+  </div>
+</div> -->

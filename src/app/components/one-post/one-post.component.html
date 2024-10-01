@@ -1,0 +1,10 @@
+<div class="card per">
+    <div class="card-body">
+        <div class="container">
+            <h1>{{ post.titulo }} <span [routerLink]="['categoria/byCat', post.categoria_id]"  class="badge text-bg-success">{{ post.nombre }}</span></h1>
+            <p>{{ post.resumen }}</p>
+            <p>{{ post.autor }}</p>
+            <br>
+        </div>
+    </div>
+</div>

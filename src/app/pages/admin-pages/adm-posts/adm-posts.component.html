@@ -1,0 +1,29 @@
+<!-- tabla que lista el titulo de el post y tiene un boton de eliminar -->
+<br><br>
+<div class="container">
+    <h1 class="mb-4 text-white" align="center">Gestionar Posts</h1>
+    <table class="table">
+        <thead>
+            <tr>
+            <th class="bg-success text-white" scope="col">Titulo</th>
+            <th class="bg-warning" scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (post of posts; track post.id) {
+            <tr>
+                    <td>{{ post.titulo }}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="eliminarPost(post.id)">Eliminar</button>
+                    </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <!-- botones de paginación -->
+    <div>
+        <button class="btn btn-primary" [disabled]="paginaActual === 1" (click)="cargarPaginaAnterior()">Anterior</button>
+        <button class="btn btn-primary" [disabled]="!paginationInfo.next_page_url" (click)="cargarSiguientePagina()">Siguiente</button>
+    </div>
+</div>
+<br><br><br>

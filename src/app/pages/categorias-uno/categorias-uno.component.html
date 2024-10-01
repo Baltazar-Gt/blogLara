@@ -1,0 +1,29 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center per tracking-in-expand">Posts</h1>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-12">
+                <p class="text-center text-white tracking-in-expand">Conoce los ultimos posts sobre: {{categoria?.nombre}}</p>
+            </div>
+        
+    </div>
+    <br>
+    <div class="row">
+        @for (post of posts; track post.id) {
+        <div class="col-md-4">
+            <div class="card text-bg-dark mb-3 animated-border" [routerLink]="['/posts', post.id]">
+                <img class="img-fluid tracking-in-expand" [src]="assets+post.imagen" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title tracking-in-expand">{{ post.titulo }}</h5>
+                    <p class="card-text text-white tracking-in-expand" [innerHTML]="post.contenido.slice(0, 100) + '...'"></p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+<br><br><br><br><br>

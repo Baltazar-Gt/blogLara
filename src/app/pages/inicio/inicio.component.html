@@ -1,0 +1,55 @@
+<br>
+<div class="container car">
+  <div id="carouselExampleCaptions" class="carousel slide">
+
+    <div class="carousel-inner ">
+      <h1 class="position-absolute top-0 start-50 translate-middle-x text-white tracking-in-expand">Ultimos Posts</h1>
+      @for (post of posts; track post.id; let active = $first) {
+      <div class="carousel-item" [class.active]="active" [routerLink]="['/posts', post.id]">
+        <img [src]="assets+post.imagen" class="d-block w-100 limite" alt="...">
+        <div class="carousel-caption">
+          <h5 class="tracking-in-expand">{{post.titulo}}</h5>
+          <p class="tracking-in-expand">{{post.nombre}}</p>
+        </div>
+      </div>
+      }
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+</div>
+
+<div class="linea-asombrosa"></div>
+<!-- Sección de Autores -->
+ <br>
+<div class="container ">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-white tracking-in-expand m-2" [routerLink]="['/autor']">Autores</h1>
+    </div>
+  </div>
+  <div class="row">
+    @for (autor of autores; track autor.id) {
+    <div class="col-md-4">
+      <div class="card bg-dark text-white" [routerLink]="['/autor', autor.id]">
+        <img class="card-img" [src]="assets+autor.foto" alt="..." alt="Card image">
+        <div class="card-img-overlay">
+          <h5 class="card-title position-absolute bottom-0 start-4 p-4 m-2 tracking-in-expand">{{ autor.name }}</h5>
+          <p class="card-text position-absolute bottom-0 start-0 m-5 p-1 tracking-in-expand d-none d-sm-block d-md-none d-lg-block">{{ autor.profesion }}</p>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="linea-asombrosa"></div>
+</div>
+<app-about></app-about>
+<br><br>

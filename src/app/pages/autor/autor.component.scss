@@ -1,0 +1,133 @@
+.autor {
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  .autor:hover {
+    transform: translateY(10px);
+  }
+
+  .per {
+    color: #5D60A6;
+  }
+  
+
+  img {
+    max-width: 200px;
+    max-height: 200px;
+  
+    @media (min-width: 768px) {
+      max-width: 400px;
+      max-height: 400px;
+    }
+  
+    @media (min-width: 1200px) {
+      max-width: 600px;
+      max-height: 600px;
+    }
+  }
+
+  .linea-asombrosa {
+    width: 100%; /* Ancho completo */
+    height: 5px; /* Altura de la línea */
+    background: linear-gradient(to right, #7EF2B0, #cc99ff); /* Gradiente de colores */
+    margin: 50px 0; /* Margen superior e inferior */
+    position: relative; /* Para poder agregar el efecto */
+    overflow: hidden; /* Para ocultar el desbordamiento */
+  }
+  
+  .linea-asombrosa::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20%; /* Empieza fuera del área visible */
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, #ffffff, transparent); /* Gradiente para un efecto de brillo */
+    animation: movimiento 5s linear infinite; /* Animación para el movimiento */
+  }
+  
+  @keyframes movimiento {
+    0% { left: -20%; } /* Inicio de la animación */
+    100% { left: 100%; } /* Fin de la animación */
+  }
+
+  .email{
+    color: #5D60A6;
+  }
+
+  .tracking-in-expand {
+	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}@-webkit-keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  
+/* Posts Title */
+h2 {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 2.5rem;
+  font-style: normal;
+  color: #5D60A6;
+
+  @media (max-width: 992px) {
+      font-size: 2rem;
+  }
+
+  @media (max-width: 768px) {
+      font-size: 1.5rem;
+  }
+}
+
+h5 {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */
+  font-style: normal;
+  color: #5D60A6; /* Color inicial */
+  animation: colorChange 5s infinite;
+
+  @media (max-width: 992px) {
+      font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+      font-size: 1rem;
+  }
+}
+/* Posts Description */
+p {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 1.2rem;
+  font-style: normal;
+  color: #FFFFFF;
+
+  @media (max-width: 992px) {
+      font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+      font-size: 1rem;
+  }
+}

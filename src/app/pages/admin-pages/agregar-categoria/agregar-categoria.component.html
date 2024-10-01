@@ -1,0 +1,80 @@
+<br><br>
+<div class="container">
+    <h1 class="mb-4 text-white" align="center">Gestionar Categorías</h1>
+    <h4 class="mb-4 text-white">Agregar Categoria</h4>
+    <div class="mb-3">
+        <label for="nombre" class="form-label text-white">Ingresa el nombre de la nueva categoria</label>
+        <div class="input-group">
+            <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre" class="form-control">
+            <button class="btn btn-primary" (click)="crearCategoria()">Agregar</button>
+        </div>
+    </div>
+    
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="bg-success text-white" scope="col">ID</th>
+                <th class="bg-success text-white" scope="col">Nombre</th>
+                <th class="bg-warning" scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (categoria of categorias; track categoria.id) {
+                <tr>
+                    <th scope="row">{{ categoria.id }}</th>
+                    <td>{{ categoria.nombre }}</td>
+                    <td>
+                        <a class="btn btn-danger me-2" (click)="eliminarCategoria(categoria.id)">Eliminar</a>
+                        <a data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-warning" (click)="obtenerCategoria(categoria.id)">Editar</a>
+                        
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Editar categoría</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="id">ID</label>
+                <input type="text" id="id" name="id" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                  <input type="text" id="name" name="name" class="form-control" [(ngModel)]="nCat" placeholder="{{categoriaSeleccionada.nombre}}">
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary hide.bs.modal" data-bs-dismiss="modal" (click)="actualizarCategoria(categoriaSeleccionada.id)">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (mensajeCre) {
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <span>{{mensajeCre}}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+}
+
+@if (MensajeElim) {
+  <div class="alert alert-success alert-dismissible fade show " role="alert">
+    <span>{{MensajeElim}}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+}
+
+<br>
+

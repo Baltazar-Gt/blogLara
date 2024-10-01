@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-header">
+       <h1>{{ pokemon.name }}</h1> 
+    </div>
+    <div class="card-body">
+        Movimientos
+        <ul>
+            @for (move of pokemon.moves; track $index) {
+                <li>{{ move.move.name }}</li>
+            }
+        </ul>
+    </div>
+</div>
